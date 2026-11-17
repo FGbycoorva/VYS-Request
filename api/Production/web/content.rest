@@ -1,0 +1,19 @@
+
+
+### 
+POST https://api.vidaysalud.com/api/web/shows
+Content-Type: application/json 
+Accept: application/json 
+x-api-key: {{$dotenv VYS_PROD_WEB_API_KEY}}
+
+###
+POST https://api.vidaysalud.com/api/web/episodes/GWIdU1yA  
+Content-Type: application/json 
+Accept: application/json 
+x-api-key: {{$dotenv VYS_PROD_WEB_API_KEY}}
+
+####
+post https://api.vidaysalud.com/api/web/episodes/HX2Z3Ugm/video  
+Content-Type: application/json 
+Accept: application/json 
+x-api-key: {{$dotenv VYS_PROD_WEB_API_KEY}}

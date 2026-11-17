@@ -1,19 +1,19 @@
 
 
 ### 
-POST https://api.vidaysalud.com/api/web/shows
+POST https://api-stage.vidaysalud.com/api/web/shows
 Content-Type: application/json 
 Accept: application/json 
-x-api-key: {{$dotenv VYS_WEB_API_KEY}}
+x-api-key: 98c63b4cf9021bf2625d5072ad018a08773e65a4e6bf7a2bf3d92e1750163fc1
 
 ###
-POST https://api.vidaysalud.com/api/web/episodes/GWIdU1yA  
+POST https://api-stage.vidaysalud.com/api/web/episodes/GWIdU1yA  
 Content-Type: application/json 
 Accept: application/json 
-x-api-key: {{$dotenv VYS_WEB_API_KEY}}
+x-api-key: 98c63b4cf9021bf2625d5072ad018a08773e65a4e6bf7a2bf3d92e1750163fc1
 
 ####
-post https://api.vidaysalud.com/api/web/episodes/HX2Z3Ugm/video  
+post https://api-stage.vidaysalud.com/api/web/episodes/HX2Z3Ugm/video  
 Content-Type: application/json 
 Accept: application/json 
-x-api-key: {{$dotenv VYS_WEB_API_KEY}}
+x-api-key: 98c63b4cf9021bf2625d5072ad018a08773e65a4e6bf7a2bf3d92e1750163fc1

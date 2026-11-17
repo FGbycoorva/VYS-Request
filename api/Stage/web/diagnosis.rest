@@ -1,5 +1,5 @@
-@baseUrl = https://api.vidaysalud.com/api
-@apiKey = {{$dotenv VYS_WEB_API_KEY}}
+@baseUrl = https://api-stage.vidaysalud.com/api
+@apiKey = 98c63b4cf9021bf2625d5072ad018a08773e65a4e6bf7a2bf3d92e1750163fc1
 
 ### 1. Con PIN: guarda la fila en Google Sheets y envía el correo
 # Espera 200 "Diagnosis sent successfully".
@@ -12,7 +12,7 @@ Authorization: Bearer {{apiKey}}
 {
   "pin": "123456",
   "jsonDiag": {
-    "diagnosis_date": "09/11/2026, 2:03:11 p. m.",
+    "diagnosis_date": "25/10/2026, 2:03:11 p. m.",
     "age_group": "30-40",
     "gender": "MUJER",
     "pregnancy": "No",

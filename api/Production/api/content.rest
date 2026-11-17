@@ -3,8 +3,8 @@ POST https://api.vidaysalud.com/api/login
 Content-Type: application/json
 
 {
-  "email": "{{$dotenv VYS_EMAIL}}",
-  "password": "{{$dotenv VYS_PASSWORD}}"
+  "email": "{{$dotenv VYS_PROD_EMAIL}}",
+  "password": "{{$dotenv VYS_PROD_PASSWORD}}"
 }
 
 ### 

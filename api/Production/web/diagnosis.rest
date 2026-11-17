@@ -1,0 +1,111 @@
+@baseUrl = https://api.vidaysalud.com/api
+@apiKey = {{$dotenv VYS_PROD_WEB_API_KEY}}
+
+### 1. Con PIN: guarda la fila en Google Sheets y envía el correo
+# Espera 200 "Diagnosis sent successfully".
+# OJO: envía un correo real a los destinatarios de la config `senddiagnosis.emails`.
+POST {{baseUrl}}/send-diagnosis
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{apiKey}}
+
+{
+  "pin": "123456",
+  "jsonDiag": {
+    "diagnosis_date": "09/11/2026, 2:03:11 p. m.",
+    "age_group": "30-40",
+    "gender": "MUJER",
+    "pregnancy": "No",
+    "region": "Cabeza",
+    "symptoms": "Fiebre y dolor de cabeza (PRUEBA VYS)",
+    "triage_score": 50,
+    "diagnoses": [
+      {
+        "name": "Gripe",
+        "specialty": "Medicina general",
+        "ids": { "snomed": "1", "icd9": "2", "icd10": "3" },
+        "redFlag": false,
+        "commonDiagnosis": true
+      },
+      {
+        "name": "Migraña",
+        "specialty": "Neurología",
+        "ids": { "snomed": "4", "icd9": "5", "icd10": "6" },
+        "redFlag": false,
+        "commonDiagnosis": false
+      }
+    ]
+  }
+}
+
+### 2. Sin PIN: guarda la fila y NO envía correo
+# Espera 200 "Diagnosis stored. Email skipped because PIN is missing."
+POST {{baseUrl}}/send-diagnosis
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{apiKey}}
+
+{
+  "jsonDiag": {
+    "diagnosis_date": "25/10/2026, 2:03:11 p. m.",
+    "age_group": "30-40",
+    "gender": "HOMBRE",
+    "pregnancy": "No",
+    "region": "Pecho",
+    "symptoms": "Tos (PRUEBA sin pin)",
+    "triage_score": 20,
+    "diagnoses": [
+      {
+        "name": "Resfriado",
+        "specialty": "Medicina general",
+        "ids": { "snomed": "7", "icd9": "8", "icd10": "9" },
+        "redFlag": false,
+        "commonDiagnosis": true
+      }
+    ]
+  }
+}
+
+### 3. Payload inválido: falta jsonDiag
+# Espera 422.
+POST {{baseUrl}}/send-diagnosis
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{apiKey}}
+
+{
+  "pin": "123456"
+}
+
+### 4. jsonDiag no es un objeto
+# Espera 422.
+POST {{baseUrl}}/send-diagnosis
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{apiKey}}
+
+{
+  "pin": "123456",
+  "jsonDiag": "texto"
+}
+
+### 5. Sin API key
+# Espera 403 "Authentication error".
+POST {{baseUrl}}/send-diagnosis
+Content-Type: application/json
+Accept: application/json
+
+{
+  "jsonDiag": { "diagnosis_date": "25/10/2026, 2:03:11 p. m." }
+}
+
+### 6. API key inválida
+# Espera 401 "Invalid API key".
+POST {{baseUrl}}/send-diagnosis
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer clave-invalida
+
+{
+  "jsonDiag": { "diagnosis_date": "25/10/2026, 2:03:11 p. m." }
+}
