@@ -1,0 +1,5 @@
+### 
+GET https://api-stage.vidaysalud.com/api/health
+Content-Type: application/json 
+Accept: application/json 
+x-health-secret: {{$dotenv VYS_HEALTH_SECRET}}

@@ -1,0 +1,11 @@
+### 
+POST https://api-stage.vidaysalud.com/api/geo
+Content-Type: application/json 
+Accept: application/json 
+Authorization: Bearer {{$dotenv VYS_WEB_API_KEY}}
+
+### 
+POST https://api.vidaysalud.com/geo
+Content-Type: application/json 
+Accept: application/json 
+Authorization: Bearer {{$dotenv VYS_GEO_API_KEY}}

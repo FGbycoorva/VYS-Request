@@ -1,0 +1,26 @@
+# @name login
+POST https://api.vidaysalud.com/api/login
+Content-Type: application/json
+
+{
+  "email": "{{$dotenv VYS_EMAIL}}",
+  "password": "{{$dotenv VYS_PASSWORD}}"
+}
+
+### 
+GET  https://api.vidaysalud.com/api/shows
+Content-Type: application/json 
+Accept: application/json 
+Authorization:  Bearer {{login.response.body.data.token}}
+
+###
+GET https://api.vidaysalud.com/api/episodes/GWIdU1yA  
+Content-Type: application/json 
+Accept: application/json 
+Authorization:  Bearer {{login.response.body.data.token}}
+
+####
+GET https://api.vidaysalud.com/api/watch/HX2Z3Ugm 
+Content-Type: application/json 
+Accept: application/json 
+Authorization:  Bearer {{login.response.body.data.token}}
